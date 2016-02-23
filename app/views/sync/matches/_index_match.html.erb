@@ -1,0 +1,10 @@
+<tr>
+  <td><%= match.status %></td>
+  <td><%= match.owner %></td>
+  <td><%= match.player_1 %></td>
+  <td><%= match.player_2 %></td>
+  <% if match.status == "Open" %>
+    <td><%= link_to 'Jogar', match %></td>
+  <% end %>
+  <td><%= link_to 'Deletar', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

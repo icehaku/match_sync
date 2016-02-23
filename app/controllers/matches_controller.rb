@@ -1,5 +1,8 @@
 class MatchesController < ApplicationController
-  before_action :set_match, only: [:show, :edit, :update, :destroy]
+  before_action :set_match, only: [:show, :edit, :update, :destroy,
+    :status_update,
+    :enter_slot,
+    :clear_slot]
 
   def index
     @matches = Match.all
@@ -10,16 +13,12 @@ class MatchesController < ApplicationController
 
   def new
     @match = Match.new
-  end
-
-  def edit
-  end
-
-  def create
-    @match = Match.new(match_params)
+    @match.player_1 = user
 
     respond_to do |format|
       if @match.save
+        sync_new @match
+
         format.html { redirect_to @match, notice: 'Match was successfully created.' }
         format.json { render :show, status: :created, location: @match }
       else
@@ -27,6 +26,9 @@ class MatchesController < ApplicationController
         format.json { render json: @match.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def edit
   end
 
   def update
@@ -44,11 +46,93 @@ class MatchesController < ApplicationController
   end
 
   def destroy
-    @match.destroy
+    if is_owner(@match.id)
+      @match.destroy
+    end
+    sync_destroy @match
+
     respond_to do |format|
       format.html { redirect_to matches_url, notice: 'Match was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def enter_slot
+    case params["slot"].to_i
+      when 1
+        @match.update_attribute(:player_1, user) unless @match.player_1.present?
+      when 2
+        @match.update_attribute(:player_2, user) unless @match.player_2.present?
+      when 3
+        @match.update_attribute(:player_3, user) unless @match.player_3.present?
+      when 4
+        @match.update_attribute(:player_4, user) unless @match.player_4.present?
+      when 5
+        @match.update_attribute(:player_5, user) unless @match.player_5.present?
+      when 6
+        @match.update_attribute(:player_6, user) unless @match.player_6.present?
+      when 7
+        @match.update_attribute(:player_7, user) unless @match.player_7.present?
+      when 8
+        @match.update_attribute(:player_8, user) unless @match.player_8.present?
+      when 9
+        @match.update_attribute(:player_9, user) unless @match.player_9.present?
+      when 10
+        @match.update_attribute(:player_10, user) unless @match.player_10.present?
+      else
+        return
+    end
+    sync_update @match
+
+    render nothing: true
+  end
+
+  def clear_slot
+    if is_owner(@match.id)
+      case params["slot"].to_i
+        when 1
+          @match.update_attribute(:player_1, "")
+        when 2
+          @match.update_attribute(:player_2, "")
+        when 3
+          @match.update_attribute(:player_3, "")
+        when 4
+          @match.update_attribute(:player_4, "")
+        when 5
+          @match.update_attribute(:player_5, "")
+        when 6
+          @match.update_attribute(:player_6, "")
+        when 7
+          @match.update_attribute(:player_7, "")
+        when 8
+          @match.update_attribute(:player_8, "")
+        when 9
+          @match.update_attribute(:player_9, "")
+        when 10
+          @match.update_attribute(:player_10, "")
+        else
+          return
+      end
+    end
+    sync_update @match
+
+    render nothing: true
+  end
+
+  def is_owner(id)
+    true
+  end
+
+  def status_update
+    if @match.status == "Open"
+      @match.update_attribute(:status, "Closed")
+    else
+      @match.update_attribute(:status, "Open")
+    end
+
+    sync_update @match
+
+    render nothing: true
   end
 
   private

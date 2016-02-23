@@ -1,11 +1,129 @@
 <div>
   <p>
+    <strong>Status:</strong>
+    <%= @match.status %>
+  </p>
+
+  <p>
+    <strong>Owner:</strong>
+    <%= @match.owner %>
+  </p>
+
+  <%= button_to "x", clear_slot_matches_path(id: @match.id, slot: 1), remote: true,
+      class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+  <%= button_to "+", enter_slot_matches_path(id: @match.id, slot: 1), remote: true,
+      class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+  <p>
     <strong>Player 1:</strong>
     <%= @match.player_1 %>
   </p>
 
+  <%= button_to "x", clear_slot_matches_path(id: @match.id, slot: 2), remote: true,
+      class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+  <%= button_to "+", enter_slot_matches_path(id: @match.id, slot: 2), remote: true,
+        class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
   <p>
     <strong>Player 2:</strong>
     <%= @match.player_2 %>
   </p>
+
+  <%= button_to "x", clear_slot_matches_path(id: @match.id, slot: 3), remote: true,
+      class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+  <%= button_to "+", enter_slot_matches_path(id: @match.id, slot: 3), remote: true,
+        class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+  <p>
+    <strong>Player 3:</strong>
+    <%= @match.player_3 %>
+  </p>
+
+  <%= button_to "x", clear_slot_matches_path(id: @match.id, slot: 4), remote: true,
+      class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+  <%= button_to "+", enter_slot_matches_path(id: @match.id, slot: 4), remote: true,
+        class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+  <p>
+    <strong>Player 4:</strong>
+    <%= @match.player_4 %>
+  </p>
+
+  <%= button_to "x", clear_slot_matches_path(id: @match.id, slot: 5), remote: true,
+      class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+
+  <%= button_to "+", enter_slot_matches_path(id: @match.id, slot: 5), remote: true,
+        class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+  <p>
+    <strong>Player 5:</strong>
+    <%= @match.player_5 %>
+  </p>
+
+  <%= button_to "x", clear_slot_matches_path(id: @match.id, slot: 6), remote: true,
+      class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+
+  <%= button_to "+", enter_slot_matches_path(id: @match.id, slot: 6), remote: true,
+        class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+  <p>
+    <strong>Player 6:</strong>
+    <%= @match.player_6 %>
+  </p>
+
+  <%= button_to "x", clear_slot_matches_path(id: @match.id, slot: 7), remote: true,
+      class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+
+  <%= button_to "+", enter_slot_matches_path(id: @match.id, slot: 7), remote: true,
+        class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+  <p>
+    <strong>Player 7:</strong>
+    <%= @match.player_7 %>
+  </p>
+
+  <%= button_to "x", clear_slot_matches_path(id: @match.id, slot: 8), remote: true,
+      class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+
+  <%= button_to "+", enter_slot_matches_path(id: @match.id, slot: 8), remote: true,
+        class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+  <p>
+    <strong>Player 8:</strong>
+    <%= @match.player_8 %>
+  </p>
+
+  <%= button_to "x", clear_slot_matches_path(id: @match.id, slot: 9), remote: true,
+      class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+  <%= button_to "+", enter_slot_matches_path(id: @match.id, slot: 9), remote: true,
+        class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+  <p>
+    <strong>Player 9:</strong>
+    <%= @match.player_9 %>
+  </p>
+
+  <%= button_to "x", clear_slot_matches_path(id: @match.id, slot: 10), remote: true,
+      class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+  <%= button_to "+", enter_slot_matches_path(id: @match.id, slot: 10), remote: true,
+        class: "class", method: :get, data: { disable_with: "Wait..." }, style: "float: left;" %>
+
+  <p>
+    <strong>Player 10:</strong>
+    <%= @match.player_10 %>
+  </p>
+
+<%= button_to match_status(@match.status), status_update_matches_path(id: @match.id),
+  remote: true,class: "class", method: :get, data: { disable_with: "Wait..." } %>
+
 </div>
+
+<%= link_to "Voltar", "/" %>

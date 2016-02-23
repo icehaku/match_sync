@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+#APP Base
 gem 'pg'
 gem 'rails', '4.2.5'
 
@@ -15,6 +15,10 @@ gem 'responders', '~> 2.0'
 gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.1.0'
 
+#Steam Omniauth
+gem 'omniauth-steam'
+gem 'figaro'
+
 #SYNC
 gem 'oj'
 gem 'sync'
@@ -27,6 +31,7 @@ group :development do
   gem 'quiet_assets'
 end
 
+#Heroku
 group :production do
   gem 'rails_12factor'
 end

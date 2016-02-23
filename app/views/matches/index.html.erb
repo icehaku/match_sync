@@ -5,25 +5,23 @@
 <table>
   <thead>
     <tr>
+      <th>Status</th>
+      <th>Owner</th>
       <th>Player 1</th>
       <th>Player 2</th>
+      <th>Player ...</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @matches.each do |match| %>
-      <tr>
-        <td><%= match.player_1 %></td>
-        <td><%= match.player_2 %></td>
-        <td><%= link_to 'Show', match %></td>
-        <td><%= link_to 'Edit', edit_match_path(match) %></td>
-        <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <%= sync partial: 'index_match', resource: match %>
+      <%= sync_new partial: 'index_new_match', resource: Match.new %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Match', new_match_path %>
+<%= link_to 'Iniciar Partida', new_match_path %>
