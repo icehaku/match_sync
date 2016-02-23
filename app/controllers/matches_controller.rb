@@ -13,6 +13,7 @@ class MatchesController < ApplicationController
 
   def new
     @match = Match.new
+    @match.owner = user
     @match.player_1 = user
 
     respond_to do |format|
@@ -23,23 +24,6 @@ class MatchesController < ApplicationController
         format.json { render :show, status: :created, location: @match }
       else
         format.html { render :new }
-        format.json { render json: @match.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    respond_to do |format|
-      if @match.update(match_params)
-        sync_update @match
-
-        format.html { redirect_to @match, notice: 'Match was successfully updated.' }
-        format.json { render :show, status: :ok, location: @match }
-      else
-        format.html { render :edit }
         format.json { render json: @match.errors, status: :unprocessable_entity }
       end
     end
