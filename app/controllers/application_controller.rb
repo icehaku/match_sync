@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def user
-    "Ice"
+    if session[:current_user].present?
+      session[:current_user]["uid"]
+    else
+      ""
+    end
   end
 end

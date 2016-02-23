@@ -121,9 +121,9 @@
     <%= @match.player_10 %>
   </p>
 
-<%= button_to match_status(@match.status), status_update_matches_path(id: @match.id),
+  <%= button_to match_status(@match.status), status_update_matches_path(id: @match.id),
   remote: true,class: "class", method: :get, data: { disable_with: "Wait..." } %>
 
 </div>
 
-<%= link_to "Voltar", "/" %>
+
