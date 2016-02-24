@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'replays/index'
+
+  get 'replays/new'
+
+  get 'replays/create'
+
+  get 'replays/destroy'
+
+  resources :replays, only: [:index, :new, :create, :destroy]
+
   root 'welcome#index'
   get  'welcome/index'
   post 'auth/steam/callback' => 'welcome#auth_callback'

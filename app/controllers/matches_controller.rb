@@ -14,7 +14,6 @@ class MatchesController < ApplicationController
   def new
     @match = Match.new
     @match.owner = user
-    @match.player_1 = user
 
     respond_to do |format|
       if @match.save
@@ -30,14 +29,14 @@ class MatchesController < ApplicationController
   end
 
   def destroy
-    if is_owner(@match.id)
+    if is_owner
       @match.destroy
-    end
-    sync_destroy @match
+      sync_destroy @match
 
-    respond_to do |format|
-      format.html { redirect_to matches_url, notice: 'Match was successfully destroyed.' }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to matches_url, notice: 'Match was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -72,7 +71,7 @@ class MatchesController < ApplicationController
   end
 
   def clear_slot
-    if is_owner(@match.id)
+    if is_owner
       case params["slot"].to_i
         when 1
           @match.update_attribute(:player_1, "")
@@ -103,18 +102,26 @@ class MatchesController < ApplicationController
     render nothing: true
   end
 
-  def is_owner(id)
-    true
+  def is_owner
+    if session[:current_user]["uid"] == @match.owner
+      true
+    else
+      false
+    end
   end
 
   def status_update
-    if @match.status == "Open"
-      @match.update_attribute(:status, "Closed")
-    else
-      @match.update_attribute(:status, "Open")
-    end
+    if is_owner
+      if @match.status == "Open"
+        @match.update_attribute(:status, "Closed")
+      elsif @match.status == "Closed"
+        @match.update_attribute(:status, "Finished")
+      else
+        @match.update_attribute(:status, "Open")
+      end
 
-    sync_update @match
+      sync_update @match
+    end
 
     render nothing: true
   end

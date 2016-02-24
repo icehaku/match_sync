@@ -17,8 +17,8 @@
   <tbody>
     <% @matches.each do |match| %>
       <%= sync partial: 'index_match', resource: match %>
-      <%= sync_new partial: 'index_new_match', resource: Match.new %>
     <% end %>
+    <%= sync_new partial: 'index_match', resource: Match.new %>
   </tbody>
 </table>
 

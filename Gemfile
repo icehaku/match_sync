@@ -6,6 +6,7 @@ gem 'rails', '4.2.5'
 
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass'
 
 gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks'
@@ -24,6 +25,8 @@ gem 'oj'
 gem 'sync'
 gem 'pusher'
 gem 'thin', require: false
+
+gem 'carrierwave'
 
 group :development do
   gem 'pry'

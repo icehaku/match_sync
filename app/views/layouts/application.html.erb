@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MatchSync</title>
-  <%= javascript_include_tag Sync.adapter_javascript_url %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>MatchSync</title>
+    <%= javascript_include_tag Sync.adapter_javascript_url %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<%= yield %>
-
-</body>
+  <body>
+    <div class = "container" style = "padding-top:20px;">
+      <%= yield %>
+    </div>
+  </body>
 </html>
