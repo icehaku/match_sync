@@ -3,17 +3,13 @@ development: &default
   encoding: utf8
   pool: 20
   timeout: 5000
-  username: postgres
-  password: postgres
+  username: ice
+  password: ice123
   host: localhost
   database: match_sync
 
 production: &default
   adapter: postgresql
   encoding: utf8
-  pool: 20
-  timeout: 5000
-  username: postgres
-  password: postgres
-  host: localhost
+  pool: 5
   database: match_sync

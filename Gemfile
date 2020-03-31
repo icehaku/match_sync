@@ -21,12 +21,8 @@ gem 'omniauth-steam'
 gem 'figaro'
 
 #SYNC
-gem 'oj'
-gem 'sync'
 gem 'pusher'
-gem 'thin', require: false
-
-gem 'carrierwave'
+gem 'sync'
 
 group :development do
   gem 'pry'

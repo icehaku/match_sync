@@ -1,4 +1,4 @@
-class AddMatchPlayers < ActiveRecord::Migration
+class AddMatchPlayers < ActiveRecord::Migration[5.2]
   def change
     add_column :matches, :player_3, :string
     add_column :matches, :player_4, :string

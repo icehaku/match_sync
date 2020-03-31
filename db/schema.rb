@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,39 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224183258) do
+ActiveRecord::Schema.define(version: 2016_02_24_183258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "matches", force: :cascade do |t|
-    t.string   "player_1"
-    t.string   "player_2"
+    t.string "player_1"
+    t.string "player_2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "owner"
-    t.string   "status"
-    t.string   "player_3"
-    t.string   "player_4"
-    t.string   "player_5"
-    t.string   "player_6"
-    t.string   "player_7"
-    t.string   "player_8"
-    t.string   "player_9"
-    t.string   "player_10"
+    t.string "owner"
+    t.string "status", default: "Open"
+    t.string "player_3"
+    t.string "player_4"
+    t.string "player_5"
+    t.string "player_6"
+    t.string "player_7"
+    t.string "player_8"
+    t.string "player_9"
+    t.string "player_10"
   end
 
   create_table "replays", force: :cascade do |t|
-    t.string   "name"
-    t.string   "attachment"
+    t.string "name"
+    t.string "attachment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "steam_id"
-    t.string   "nick"
-    t.string   "image"
+    t.string "steam_id"
+    t.string "nick"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

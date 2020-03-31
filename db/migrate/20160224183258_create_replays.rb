@@ -1,4 +1,4 @@
-class CreateReplays < ActiveRecord::Migration
+class CreateReplays < ActiveRecord::Migration[5.2]
   def change
     create_table :replays do |t|
       t.string :name
