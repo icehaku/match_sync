@@ -2,19 +2,19 @@ source 'https://rubygems.org'
 
 #APP Base
 gem 'pg'
-gem 'rails', '4.2.5'
+gem 'rails', '5.2.4.2'
 
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-sass'
 
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
-gem 'responders', '~> 2.0'
+gem 'jbuilder'
+gem 'responders'
 
-gem 'sass-rails', '~> 5.0'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'sass-rails'
+gem 'coffee-rails'
 
 #Steam Omniauth
 gem 'omniauth-steam'
@@ -31,7 +31,6 @@ gem 'carrierwave'
 group :development do
   gem 'pry'
   gem 'pry-remote'
-  gem 'quiet_assets'
 end
 
 #Heroku
@@ -39,4 +38,4 @@ group :production do
   gem 'rails_12factor'
 end
 
-ruby '2.1.5'
+ruby '2.6.3'
